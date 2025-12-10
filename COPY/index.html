@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beautiful Simple Page</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.05);
+      --accent: #7c3aed; /* purple */
+      --accent-2: #06b6d4; /* teal */
+      --muted: rgba(255,255,255,0.7);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+                  radial-gradient(900px 500px at 90% 90%, rgba(6,182,212,0.08), transparent),
+                  var(--bg);
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:28px;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:start;
+    }
+
+    /* Left content */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;
+      border-radius:16px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .kicker{
+      display:inline-block;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff;
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:13px;
+      letter-spacing:0.3px;
+      margin-bottom:16px;
+    }
+
+    h1{
+      margin:0 0 10px 0;
+      font-size:34px;
+      line-height:1.06;
+      letter-spacing:-0.4px;
+    }
+
+    p.lead{
+      margin:0 0 18px 0;
+      color: var(--muted);
+      font-size:16px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      border:none;
+      padding:10px 16px;
+      border-radius:10px;
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow: 0 8px 18px rgba(124,58,237,0.14);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn.ghost{
+      background: transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      color: #fff;
+      box-shadow:none;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:12px;
+      margin-top:20px;
+    }
+    .feature{
+      background:var(--glass);
+      padding:14px;
+      border-radius:10px;
+      font-size:14px;
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .feature .dot{
+      width:10px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      flex:0 0 10px;
+    }
+
+    /* Right card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      padding:20px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+
+    .profile{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .avatar{
+      width:84px;height:84px;border-radius:16px;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:22px;color:#fff;
+      box-shadow: 0 8px 20px rgba(12,12,30,0.6);
+    }
+    .meta h3{ margin:0; font-size:18px; }
+    .meta p{ margin:4px 0 0 0; color:var(--muted); font-size:14px; }
+
+    .stats{
+      display:flex;
+      gap:12px;
+      margin-top:16px;
+    }
+    .stat{
+      flex:1;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:12px;border-radius:10px;text-align:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .stat .num{ font-weight:700; font-size:18px; }
+    .stat .label{ color:var(--muted); font-size:13px; margin-top:6px; }
+
+    .about{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    footer{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width:880px){
+      .container{ grid-template-columns: 1fr; padding:0 }
+      body{ padding:20px; }
+      .avatar{ width:72px;height:72px }
+    }
+
+    /* small, tasteful animation */
+    .hero, .card{ transform: translateY(6px); opacity:0; animation: lift .6s ease forwards; }
+    .card{ animation-delay: .08s; }
+    @keyframes lift{
+      to{ transform:none; opacity:1 }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <!-- Left: Hero / Content -->
+    <section class="hero" aria-labelledby="title">
+      <span class="kicker">Welcome</span>
+      <h1 id="title">Beautiful, simple page — made for you</h1>
+      <p class="lead">A small, modern layout with soft glassy surfaces, subtle gradients, and responsive behavior. Use this as a personal landing page, portfolio intro, or a starting template for any project.</p>
+
+      <div class="actions" role="group" aria-label="Actions">
+        <button class="btn" onclick="sayHi()">Say Hello</button>
+        <button class="btn ghost" onclick="downloadSample()">Download</button>
+      </div>
+
+      <div class="features" aria-hidden="false">
+        <div class="feature"><span class="dot" aria-hidden="true"></span>Fast to load</div>
+        <div class="feature"><span class="dot" aria-hidden="true"></span>Responsive</div>
+        <div class="feature"><span class="dot" aria-hidden="true"></span>Easy to customize</div>
+        <div class="feature"><span class="dot" aria-hidden="true"></span>Accessible</div>
+      </div>
+    </section>
+
+    <!-- Right: Profile / Card -->
+    <aside class="card" aria-labelledby="profileName">
+      <div class="profile">
+        <div class="avatar" aria-hidden="true">YK</div>
+        <div class="meta">
+          <h3 id="profileName">Your Name</h3>
+          <p>Web Enthusiast • Designer • Dev</p>
+        </div>
+      </div>
+
+      <div class="stats" role="list">
+        <div class="stat" role="listitem">
+          <div class="num">24</div>
+          <div class="label">Projects</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="num">4.9k</div>
+          <div class="label">Followers</div>
+        </div>
+        <div class="stat" role="listitem">
+          <div class="num">12</div>
+          <div class="label">Awards</div>
+        </div>
+      </div>
+
+      <p class="about">I build small, delightful web experiences. Focused on clarity, performance and accessible design. I enjoy coffee, code, and quiet playlists.</p>
+
+      <footer>
+        <span>Hyderabad, India</span>
+        <div style="display:flex;gap:8px;">
+          <a href="#" title="Instagram" style="color:var(--muted);text-decoration:none;font-weight:600">Insta</a>
+          <a href="#" title="Twitter" style="color:var(--muted);text-decoration:none;font-weight:600">X</a>
+        </div>
+      </footer>
+    </aside>
+  </div>
+
+  <script>
+    // Small helpers
+    function sayHi(){
+      const msg = "Hey! Save this file as index.html and open in your browser — enjoy 🎉";
+      alert(msg);
+    }
+
+    function downloadSample(){
+      const data = `This is a simple starter page you can customize.`;
+      const blob = new Blob([data], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'readme.txt';
+      document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
